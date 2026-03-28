@@ -70,13 +70,25 @@
     }
 
     .topbar {
-      position: relative;
+      position: fixed;
+      top: 0;
+      left: 0;
       z-index: 20;
       width: 100%;
       border-bottom: 1px solid rgba(79, 59, 45, 0.14);
       background: rgba(248, 241, 234, 0.9);
       backdrop-filter: blur(10px);
       overflow: visible;
+      transition: transform 260ms ease, box-shadow 260ms ease, background-color 260ms ease;
+    }
+
+    .topbar.is-hidden {
+      transform: translateY(-100%);
+    }
+
+    .topbar.is-scrolled {
+      box-shadow: 0 10px 28px rgba(79, 59, 45, 0.12);
+      background: rgba(248, 241, 234, 0.96);
     }
 
     .topbar-inner {
@@ -217,7 +229,7 @@
       flex: 1;
       width: min(1140px, calc(100% - 2rem));
       margin: 0 auto;
-      padding: 2.5rem 0 0;
+      padding: 7rem 0 0;
     }
 
     .hero {
@@ -532,7 +544,7 @@
     @media (max-width: 760px) {
       .content {
         width: min(100% - 1.25rem, 1080px);
-        padding-top: 1.25rem;
+        padding-top: 6rem;
       }
 
       .hero {
@@ -622,12 +634,12 @@
 
           <section class="description-card" aria-label="Practice description">
             <p>
-              A warm, grounded space for reflection, healing, and growth. Autumn Doshier
-              Counseling offers professional support for individuals seeking clarity,
-              resilience, and a more connected way forward.
+              I offer therapy for adolescents and adults ages 14 and older, with support
+              for individuals and couples seeking thoughtful, grounded care through
+              seasons of change, healing, and growth.
             </p>
             <div class="hero-actions">
-              <a class="cta-link" href="contact.html">Want to schedule an appointment?</a>
+              <a class="cta-link" href="contact.html">Schedule a consultation</a>
               <a class="cta-link secondary" href="referral.html">Counselors looking to make a referral</a>
             </div>
           </section>
@@ -648,47 +660,47 @@
             <h2>A steady place to begin</h2>
             <p>
               Beginning counseling can feel vulnerable, especially when life already
-              feels full. A welcoming first impression matters, and so does a therapeutic
-              space that is calm, respectful, and thoughtfully paced.
+              feels full. I offer a calm and respectful space for clients who want
+              support that is both clinically grounded and deeply human.
             </p>
             <p>
-              This practice is centered on helping clients slow down, feel heard, and
-              make sense of what they are carrying. The goal is not just symptom relief,
-              but a deeper sense of clarity, self-trust, and connection.
+              I work with a wide range of concerns including trauma, grief and loss,
+              anxiety, depression, stress management, disordered eating, self-esteem,
+              life transitions, relational difficulties, and perinatal or postpartum
+              mood disorders.
             </p>
           </div>
 
           <aside class="section-aside">
-            <h2>What clients often hope for</h2>
+            <h2>Areas of expertise</h2>
             <ul class="detail-list">
-              <li>Support navigating anxiety, overwhelm, and major life transitions</li>
-              <li>A grounded space for reflection, emotional processing, and healing</li>
-              <li>Professional care that feels human, attentive, and collaborative</li>
+              <li>Trauma, grief and loss, anxiety, and depression</li>
+              <li>Stress management, self-compassion, and self-worth</li>
+              <li>Gender, sexuality, relational concerns, and life transitions</li>
             </ul>
           </aside>
         </section>
 
         <section class="split-section">
           <div class="section-copy">
-            <h2>A simple and thoughtful process</h2>
+            <h2>Types of therapy and support</h2>
             <p>
-              The first step is often just reaching out. Whether you are exploring therapy
-              for the first time or returning to it with clear goals in mind, the process
-              should feel approachable from the start.
+              I have experience with multiple therapy modalities and training supports,
+              allowing the work to be tailored to each client rather than forcing
+              clients into a single approach.
             </p>
             <ul class="detail-list">
-              <li>Start with a conversation to see whether the practice is the right fit</li>
-              <li>Move at a pace that allows for reflection and real change</li>
-              <li>Stay connected to practical goals while making room for deeper insight</li>
+              <li>Humanistic, relational, attachment-focused, and trauma-informed therapy</li>
+              <li>EMDR, Brainspotting, polyvagal, and somatic interventions</li>
+              <li>ACT, expressive arts therapy, and HAES or intuitive eating-informed support</li>
             </ul>
           </div>
 
           <aside class="section-aside">
-            <h2>Designed for ease</h2>
+            <h2>Getting started</h2>
             <p>
-              This website is being built to make it easy for prospective clients and
-              referring professionals to find what they need quickly, clearly, and with
-              confidence.
+              Before scheduling an initial appointment, I offer a free 15-minute phone
+              consultation to help make sure the fit feels right.
             </p>
           </aside>
         </section>
@@ -699,7 +711,7 @@
             <article class="pathway-card">
               <h3>Ready to reach out?</h3>
               <p>
-                If you are considering counseling and want to schedule an appointment or
+                If you are considering counseling and want to schedule a consultation or
                 ask a few initial questions, the contact page is the best place to start.
               </p>
               <a class="cta-link" href="contact.html">Schedule a consultation</a>
@@ -753,8 +765,10 @@
   </div>
 
   <script>
+    const topbar = document.querySelector(".topbar");
     const menuToggle = document.getElementById("menuToggle");
     const siteMenu = document.getElementById("siteMenu");
+    let lastScrollY = window.scrollY;
 
     if (menuToggle && siteMenu) {
       const setMenuState = (isOpen) => {
@@ -779,6 +793,26 @@
           setMenuState(false);
         }
       });
+    }
+
+    if (topbar) {
+      window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        const scrollingDown = currentScrollY > lastScrollY;
+        const passedThreshold = currentScrollY > 80;
+
+        topbar.classList.toggle("is-scrolled", currentScrollY > 12);
+
+        if (!passedThreshold) {
+          topbar.classList.remove("is-hidden");
+        } else if (scrollingDown) {
+          topbar.classList.add("is-hidden");
+        } else {
+          topbar.classList.remove("is-hidden");
+        }
+
+        lastScrollY = currentScrollY;
+      }, { passive: true });
     }
   </script>
 </body>
