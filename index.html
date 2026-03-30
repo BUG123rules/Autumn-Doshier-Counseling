@@ -229,71 +229,111 @@
       flex: 1;
       width: min(1140px, calc(100% - 2rem));
       margin: 0 auto;
-      padding: 7rem 0 0;
+      padding: 6rem 0 0;
     }
 
     .hero {
-      padding: 4.5rem 0 2.5rem;
+      padding: 0.85rem 0 0.95rem;
       text-align: left;
-      animation: rise 900ms ease-out both;
+      animation: rise 320ms ease-out both;
+      will-change: transform, opacity;
     }
 
     .hero h1 {
       margin: 0;
-      font-size: clamp(2.4rem, 6vw, 4.9rem);
+      font-size: clamp(2.2rem, 5vw, 4.35rem);
       letter-spacing: 0.04em;
-      line-height: 1.05;
+      line-height: 1.02;
       font-weight: 600;
-      color: var(--coffee-deep);
+      color: #fffaf5;
       max-width: 12ch;
+      text-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
     }
 
     .hero-tag {
       width: fit-content;
       margin: 1rem 0 0;
       padding: 0.45rem 0;
-      border: 1px solid var(--line);
-      color: #5f4736;
+      border: 1px solid rgba(248, 241, 234, 0.24);
+      color: rgba(248, 241, 234, 0.9);
       font-size: 0.92rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       border-left: 0;
       border-right: 0;
       background: transparent;
+      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
     }
 
-    .main-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 0.95fr) minmax(320px, 0.9fr);
-      gap: 2.5rem;
-      align-items: start;
-      padding-bottom: 3rem;
+    .hero-banner {
+      position: relative;
+      min-height: 485px;
+      margin-bottom: 1.6rem;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #dfcdbd;
+      box-shadow: var(--shadow);
+      animation: rise 440ms ease-out both;
+      will-change: transform, opacity;
+    }
+
+    .hero-banner img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(27, 18, 11, 0.3), rgba(27, 18, 11, 0.45) 48%, rgba(27, 18, 11, 0.7)),
+        linear-gradient(90deg, rgba(27, 18, 11, 0.38), rgba(27, 18, 11, 0.1));
+      pointer-events: none;
+    }
+
+    .hero-banner-content {
+      position: relative;
+      z-index: 1;
+      min-height: 485px;
+      padding: 1.35rem 3rem 1.35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .hero-copy {
+      max-width: 42rem;
+      animation: rise 320ms ease-out both;
+      will-change: transform, opacity;
     }
 
     .description-card {
-      width: 100%;
-      padding: 2rem 0 0;
-      border: 1px solid var(--line);
-      border-left: 0;
-      border-right: 0;
-      border-bottom: 0;
-      background: linear-gradient(180deg, rgba(247, 239, 231, 0.45), transparent);
-      animation: rise 1050ms ease-out both;
+      width: min(760px, 100%);
+      padding: 1.1rem 0 0;
+      border-top: 1px solid rgba(248, 241, 234, 0.24);
+      background: transparent;
+      animation: rise 380ms ease-out both;
+      will-change: transform, opacity;
     }
 
     .description-card p {
       margin: 0;
-      font-size: clamp(1.03rem, 1.8vw, 1.2rem);
-      line-height: 1.9;
-      color: var(--muted);
+      font-size: clamp(1rem, 1.55vw, 1.1rem);
+      line-height: 1.7;
+      color: rgba(248, 241, 234, 0.88);
       text-align: left;
+      max-width: 40rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-top: 2rem;
+      margin-top: 1.35rem;
     }
 
     .cta-link {
@@ -334,56 +374,27 @@
       transform: translateX(3px);
     }
 
-    .media-panel {
-      width: 100%;
-      margin: 0;
-      padding: 0;
-      border: 1px solid var(--line);
-      background: #dfcdbd;
-      box-shadow: var(--shadow);
-      animation: rise 1200ms ease-out both;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .media-panel img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      min-height: 420px;
-      max-height: 560px;
-      object-fit: cover;
-      background: #d9c8b9;
-    }
-
-    .media-panel::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(47, 34, 25, 0.12), rgba(47, 34, 25, 0.42));
-      pointer-events: none;
-    }
-
     .media-quote {
-      position: absolute;
-      inset: auto 2rem 2rem 2rem;
-      z-index: 1;
-      max-width: 26rem;
+      position: relative;
+      margin-top: 1.45rem;
+      max-width: 24rem;
       color: #fffaf5;
       text-shadow: 0 3px 16px rgba(0, 0, 0, 0.28);
+      animation: rise 460ms ease-out both;
+      will-change: transform, opacity;
     }
 
     .media-quote blockquote {
       margin: 0;
-      font-size: clamp(1.4rem, 2.4vw, 2rem);
-      line-height: 1.35;
+      font-size: clamp(1.25rem, 2vw, 1.7rem);
+      line-height: 1.28;
     }
 
     .media-quote cite {
       display: block;
-      margin-top: 0.85rem;
+      margin-top: 0.65rem;
       font-style: normal;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: rgba(255, 250, 245, 0.86);
@@ -533,7 +544,7 @@
     @keyframes rise {
       from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(14px);
       }
       to {
         opacity: 1;
@@ -541,14 +552,28 @@
       }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      .hero,
+      .description-card,
+      .media-panel,
+      .split-section,
+      .section-aside,
+      .pathways,
+      .footer,
+      .section-block,
+      .pathway-card {
+        animation: none !important;
+      }
+    }
+
     @media (max-width: 760px) {
       .content {
         width: min(100% - 1.25rem, 1080px);
-        padding-top: 6rem;
+        padding-top: 5.35rem;
       }
 
       .hero {
-        padding: 2.4rem 0 1.75rem;
+        padding: 0.55rem 0 0.85rem;
       }
 
       .topbar-inner {
@@ -561,8 +586,16 @@
       }
 
       .main-grid {
-        grid-template-columns: 1fr;
         gap: 1.5rem;
+      }
+
+      .hero-banner,
+      .hero-banner-content {
+        min-height: 410px;
+      }
+
+      .hero-banner-content {
+        padding: 0.8rem 1.25rem 1rem;
       }
 
       .split-section,
@@ -570,12 +603,7 @@
         grid-template-columns: 1fr;
       }
 
-      .media-panel img {
-        min-height: 280px;
-      }
-
       .media-quote {
-        inset: auto 1.25rem 1.25rem 1.25rem;
         max-width: none;
       }
 
@@ -625,34 +653,35 @@
     </header>
 
     <main class="content">
-      <div class="main-grid">
-        <section>
-          <section class="hero">
-            <h1>Autumn Doshier Counseling</h1>
-            <div class="hero-tag">Compassionate care for meaningful change</div>
-          </section>
+      <section class="hero-banner" aria-label="Calming ocean visual banner">
+        <img src="ocean.gif" alt="Gentle ocean waves creating a calming visual backdrop">
+        <div class="hero-banner-content">
+          <div class="hero-copy">
+            <section class="hero">
+              <h1>Autumn Doshier Counseling</h1>
+              <div class="hero-tag">Compassionate care for meaningful change</div>
+            </section>
 
-          <section class="description-card" aria-label="Practice description">
-            <p>
-              I offer therapy for adolescents and adults ages 14 and older, with support
-              for individuals and couples seeking thoughtful, grounded care through
-              seasons of change, healing, and growth.
-            </p>
-            <div class="hero-actions">
-              <a class="cta-link" href="contact.html">Schedule a consultation</a>
-              <a class="cta-link secondary" href="referral.html">Counselors looking to make a referral</a>
-            </div>
-          </section>
-        </section>
+            <section class="description-card" aria-label="Practice description">
+              <p>
+                I offer therapy for adolescents and adults ages 14 and older, with support
+                for individuals and couples seeking thoughtful, grounded care through
+                seasons of change, healing, and growth.
+              </p>
+            </section>
+          </div>
 
-        <section class="media-panel" aria-label="Calming ocean visual">
-          <img src="ocean.gif" alt="Gentle ocean waves creating a calming visual backdrop">
           <div class="media-quote">
             <blockquote>"To pay attention, this is our endless and proper work"</blockquote>
             <cite>- Mary Oliver</cite>
           </div>
-        </section>
-      </div>
+
+          <div class="hero-actions">
+            <a class="cta-link" href="contact.html">Schedule a consultation</a>
+            <a class="cta-link secondary" href="referral.html">Counselors looking to make a referral</a>
+          </div>
+        </div>
+      </section>
 
       <section class="landing-sections" aria-label="Additional practice details">
         <section class="split-section">
