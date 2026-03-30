@@ -6,18 +6,18 @@
   <title>Autumn Doshier Counseling</title>
   <style>
     :root {
-      --bg: #ece1d4;
-      --bg-soft: #dccab7;
-      --panel: #f7efe7;
-      --panel-strong: #e7d8ca;
-      --coffee: #6f4e37;
-      --coffee-deep: #2f1f14;
-      --coffee-light: #9e7457;
-      --sand: #f8f1ea;
-      --text: #24170f;
-      --muted: #4f3b2d;
-      --line: rgba(79, 59, 45, 0.2);
-      --shadow: 0 22px 50px rgba(62, 40, 25, 0.12);
+      --bg: #f4f1eb;
+      --bg-soft: #e7e0d5;
+      --panel: #fbf8f2;
+      --panel-strong: #ece4d8;
+      --coffee: #a77443;
+      --coffee-deep: #242848;
+      --coffee-light: #64476b;
+      --sand: #faf7f1;
+      --text: #242848;
+      --muted: #2d5540;
+      --line: rgba(36, 40, 72, 0.16);
+      --shadow: 0 22px 50px rgba(36, 40, 72, 0.1);
     }
 
     * {
@@ -34,8 +34,8 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--text);
       background:
-        linear-gradient(180deg, rgba(111, 78, 55, 0.1), transparent 18%),
-        linear-gradient(180deg, #f1e6da 0%, var(--bg) 38%, #d8c4b1 100%);
+        linear-gradient(180deg, rgba(47, 116, 115, 0.08), transparent 18%),
+        linear-gradient(180deg, #faf7f1 0%, var(--bg) 42%, #e8e1d6 100%);
     }
 
     .page-shell {
@@ -58,7 +58,7 @@
       left: 0;
       right: 0;
       height: 340px;
-      background: linear-gradient(135deg, rgba(126, 92, 67, 0.16), transparent 60%);
+      background: linear-gradient(135deg, rgba(47, 116, 115, 0.14), transparent 60%);
     }
 
     .page-shell::after {
@@ -66,7 +66,7 @@
       bottom: 0;
       width: 45%;
       height: 220px;
-      background: linear-gradient(180deg, transparent, rgba(79, 59, 45, 0.12));
+      background: linear-gradient(180deg, transparent, rgba(100, 71, 107, 0.1));
     }
 
     .topbar {
@@ -75,8 +75,8 @@
       left: 0;
       z-index: 20;
       width: 100%;
-      border-bottom: 1px solid rgba(79, 59, 45, 0.14);
-      background: rgba(248, 241, 234, 0.9);
+      border-bottom: 1px solid rgba(36, 40, 72, 0.1);
+      background: rgba(250, 247, 241, 0.94);
       backdrop-filter: blur(10px);
       overflow: visible;
       transition: transform 260ms ease, box-shadow 260ms ease, background-color 260ms ease;
@@ -87,8 +87,8 @@
     }
 
     .topbar.is-scrolled {
-      box-shadow: 0 10px 28px rgba(79, 59, 45, 0.12);
-      background: rgba(248, 241, 234, 0.96);
+      box-shadow: 0 10px 28px rgba(36, 40, 72, 0.1);
+      background: rgba(250, 247, 241, 0.98);
     }
 
     .topbar-inner {
@@ -104,7 +104,7 @@
       font-size: 1rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--coffee-deep);
+      color: var(--muted);
     }
 
     .menu-button {
@@ -113,8 +113,8 @@
       justify-content: center;
       width: 48px;
       height: 48px;
-      border: 1px solid rgba(79, 59, 45, 0.2);
-      background: rgba(247, 239, 231, 0.78);
+      border: 1px solid rgba(36, 40, 72, 0.16);
+      background: rgba(250, 247, 241, 0.9);
       color: var(--coffee-deep);
       cursor: pointer;
       transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
@@ -124,12 +124,12 @@
 
     .menu-button:hover {
       transform: scale(1.08);
-      box-shadow: 0 12px 24px rgba(79, 59, 45, 0.12);
+      box-shadow: 0 12px 24px rgba(36, 40, 72, 0.1);
       background: rgba(255, 248, 241, 0.95);
     }
 
     .menu-button:focus-visible {
-      outline: 2px solid rgba(111, 78, 55, 0.28);
+      outline: 2px solid rgba(47, 116, 115, 0.24);
       outline-offset: 3px;
     }
 
@@ -187,9 +187,9 @@
       right: 0;
       width: min(280px, calc(100vw - 2rem));
       padding: 0.7rem;
-      border: 1px solid rgba(79, 59, 45, 0.16);
-      background: rgba(248, 241, 234, 0.97);
-      box-shadow: 0 20px 45px rgba(79, 59, 45, 0.16);
+      border: 1px solid rgba(36, 40, 72, 0.12);
+      background: rgba(250, 247, 241, 0.98);
+      box-shadow: 0 20px 45px rgba(36, 40, 72, 0.12);
       opacity: 0;
       transform: translateY(-10px) scale(0.96);
       pointer-events: none;
@@ -218,9 +218,9 @@
     }
 
     .menu-panel a:hover {
-      background: rgba(111, 78, 55, 0.08);
+      background: rgba(47, 116, 115, 0.08);
       transform: translateX(4px);
-      color: #1f140d;
+      color: var(--muted);
     }
 
     .content {
@@ -271,7 +271,7 @@
       margin-bottom: 1.6rem;
       border: 1px solid var(--line);
       overflow: hidden;
-      background: #dfcdbd;
+      background: #d8ddd8;
       box-shadow: var(--shadow);
       animation: rise 440ms ease-out both;
       will-change: transform, opacity;
@@ -290,8 +290,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(27, 18, 11, 0.3), rgba(27, 18, 11, 0.45) 48%, rgba(27, 18, 11, 0.7)),
-        linear-gradient(90deg, rgba(27, 18, 11, 0.38), rgba(27, 18, 11, 0.1));
+        linear-gradient(180deg, rgba(36, 40, 72, 0.26), rgba(36, 40, 72, 0.44) 48%, rgba(36, 40, 72, 0.66)),
+        linear-gradient(90deg, rgba(45, 85, 64, 0.34), rgba(45, 85, 64, 0.08));
       pointer-events: none;
     }
 
@@ -343,25 +343,35 @@
       min-height: 50px;
       gap: 0.65rem;
       padding: 0.95rem 1.4rem;
-      border: 1px solid rgba(79, 59, 45, 0.16);
-      color: var(--coffee-deep);
+      border: 1px solid rgba(36, 40, 72, 0.22);
+      color: #faf7f1;
       text-decoration: none;
-      background: linear-gradient(180deg, rgba(255, 248, 241, 0.98), rgba(239, 226, 212, 0.92));
-      box-shadow: 0 12px 24px rgba(79, 59, 45, 0.08);
+      background: linear-gradient(180deg, #2f7473, #242848);
+      box-shadow: 0 12px 24px rgba(36, 40, 72, 0.1);
       transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, border-color 180ms ease;
       font-size: 0.98rem;
+      font-weight: 600;
       line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
     }
 
     .cta-link:hover {
       transform: translateY(-2px);
-      box-shadow: 0 18px 30px rgba(79, 59, 45, 0.12);
-      background: linear-gradient(180deg, rgba(255, 251, 246, 1), rgba(242, 229, 216, 0.96));
-      border-color: rgba(79, 59, 45, 0.24);
+      box-shadow: 0 18px 30px rgba(36, 40, 72, 0.14);
+      background: linear-gradient(180deg, #378180, #2b2f53);
+      border-color: rgba(36, 40, 72, 0.34);
     }
 
     .cta-link.secondary {
-      background: linear-gradient(180deg, rgba(247, 239, 231, 0.4), rgba(239, 226, 212, 0.5));
+      border-color: rgba(36, 40, 72, 0.16);
+      color: var(--coffee-deep);
+      background: rgba(250, 247, 241, 0.95);
+      text-shadow: none;
+    }
+
+    .cta-link.secondary:hover {
+      background: rgba(255, 252, 248, 1);
+      border-color: rgba(47, 116, 115, 0.28);
     }
 
     .cta-link::after {
@@ -453,8 +463,8 @@
 
     .section-aside {
       padding: 1.35rem;
-      background: rgba(247, 239, 231, 0.55);
-      border: 1px solid rgba(79, 59, 45, 0.14);
+      background: rgba(250, 247, 241, 0.74);
+      border: 1px solid rgba(36, 40, 72, 0.1);
       box-shadow: var(--shadow);
     }
 
@@ -472,8 +482,8 @@
 
     .pathway-card {
       padding: 1.4rem;
-      background: rgba(247, 239, 231, 0.62);
-      border: 1px solid rgba(79, 59, 45, 0.14);
+      background: rgba(250, 247, 241, 0.78);
+      border: 1px solid rgba(36, 40, 72, 0.1);
     }
 
     .pathway-card h3 {
@@ -492,8 +502,8 @@
       width: 100%;
       margin: auto 0 0;
       padding: 2rem 0 1.25rem;
-      border-top: 1px solid rgba(79, 59, 45, 0.18);
-      background: linear-gradient(180deg, rgba(226, 210, 194, 0.72), rgba(212, 191, 171, 0.94));
+      border-top: 1px solid rgba(36, 40, 72, 0.12);
+      background: linear-gradient(180deg, rgba(233, 225, 214, 0.8), rgba(223, 216, 206, 0.96));
     }
 
     .footer-grid {
