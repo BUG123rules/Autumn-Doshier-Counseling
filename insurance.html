@@ -6,12 +6,16 @@
   <title>Insurance | Autumn Doshier Counseling</title>
   <style>
     :root {
-      --bg: #ece1d4;
-      --coffee-deep: #2f1f14;
-      --coffee-light: #9e7457;
-      --text: #24170f;
-      --muted: #4f3b2d;
-      --line: rgba(79, 59, 45, 0.2);
+      --bg: #f4f1eb;
+      --coffee-deep: #242848;
+      --coffee-light: #64476b;
+      --text: #242848;
+      --muted: #2d5540;
+      --line: rgba(36, 40, 72, 0.16);
+      --seascape: #2f7473;
+      --amethyst: #821a27;
+      --golden: #a77443;
+      --lapis: #64476b;
     }
 
     * { box-sizing: border-box; }
@@ -22,8 +26,10 @@
       font-family: Georgia, "Times New Roman", serif;
       color: var(--text);
       background:
-        linear-gradient(180deg, rgba(111, 78, 55, 0.1), transparent 18%),
-        linear-gradient(180deg, #f1e6da 0%, var(--bg) 38%, #d8c4b1 100%);
+        radial-gradient(circle at top right, rgba(167, 116, 67, 0.1), transparent 26%),
+        radial-gradient(circle at top left, rgba(47, 116, 115, 0.1), transparent 28%),
+        linear-gradient(180deg, rgba(100, 71, 107, 0.06), transparent 18%),
+        linear-gradient(180deg, #faf7f1 0%, var(--bg) 42%, #e8e1d6 100%);
     }
 
     .page-shell {
@@ -32,26 +38,22 @@
       flex-direction: column;
     }
 
+    /* ── Topbar ── */
     .topbar {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       z-index: 20;
       width: 100%;
-      border-bottom: 1px solid rgba(79, 59, 45, 0.14);
-      background: rgba(248, 241, 234, 0.9);
+      border-bottom: 1px solid rgba(36, 40, 72, 0.1);
+      background: rgba(250, 247, 241, 0.94);
       backdrop-filter: blur(10px);
       overflow: visible;
       transition: transform 260ms ease, box-shadow 260ms ease, background-color 260ms ease;
     }
-
-    .topbar.is-hidden {
-      transform: translateY(-100%);
-    }
-
+    .topbar.is-hidden { transform: translateY(-100%); }
     .topbar.is-scrolled {
-      box-shadow: 0 10px 28px rgba(79, 59, 45, 0.12);
-      background: rgba(248, 241, 234, 0.96);
+      box-shadow: 0 10px 28px rgba(36, 40, 72, 0.1);
+      background: rgba(250, 247, 241, 0.98);
     }
 
     .topbar-inner,
@@ -62,7 +64,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
     .topbar-inner {
       min-height: 76px;
       display: flex;
@@ -74,55 +75,45 @@
       font-size: 1rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--coffee-deep);
+      color: var(--lapis);
     }
 
-    .menu-wrap {
-      position: relative;
-    }
+    .menu-wrap { position: relative; }
 
     .menu-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border: 1px solid rgba(79, 59, 45, 0.2);
-      background: rgba(247, 239, 231, 0.78);
+      width: 48px; height: 48px;
+      border: 1px solid rgba(36, 40, 72, 0.16);
+      background: rgba(250, 247, 241, 0.9);
       color: var(--coffee-deep);
       cursor: pointer;
       transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
       position: relative;
       overflow: hidden;
     }
-
     .menu-button:hover {
       transform: scale(1.08);
-      box-shadow: 0 12px 24px rgba(79, 59, 45, 0.12);
-      background: rgba(255, 248, 241, 0.95);
+      box-shadow: 0 12px 24px rgba(36, 40, 72, 0.1);
+      background: rgba(245, 240, 247, 0.98);
     }
 
     .menu-icon {
       position: relative;
-      width: 22px;
-      height: 16px;
+      width: 22px; height: 16px;
       transition: transform 420ms ease;
     }
-
     .menu-icon span {
       position: absolute;
-      left: 0;
-      width: 100%;
-      height: 2px;
+      left: 0; width: 100%; height: 2px;
       background: var(--coffee-deep);
       transform-origin: center;
       transition: transform 320ms ease, opacity 220ms ease, top 320ms ease;
     }
-
     .menu-icon span:nth-child(1) { top: 0; }
     .menu-icon span:nth-child(2) { top: 7px; }
     .menu-icon span:nth-child(3) { top: 14px; }
-
     .menu-button.is-open .menu-icon { transform: rotate(180deg); }
     .menu-button.is-open .menu-icon span:nth-child(1) { top: 7px; transform: rotate(45deg); }
     .menu-button.is-open .menu-icon span:nth-child(2) { opacity: 0; transform: scaleX(0.3); }
@@ -130,31 +121,24 @@
 
     .menu-panel {
       position: absolute;
-      top: calc(100% + 10px);
-      right: 0;
+      top: calc(100% + 10px); right: 0;
       width: min(280px, calc(100vw - 2rem));
       padding: 0.7rem;
-      border: 1px solid rgba(79, 59, 45, 0.16);
-      background: rgba(248, 241, 234, 0.97);
-      box-shadow: 0 20px 45px rgba(79, 59, 45, 0.16);
+      border: 1px solid rgba(36, 40, 72, 0.12);
+      background: rgba(250, 247, 241, 0.98);
+      box-shadow: 0 20px 45px rgba(36, 40, 72, 0.12);
       opacity: 0;
       transform: translateY(-10px) scale(0.96);
       pointer-events: none;
       transition: opacity 240ms ease, transform 300ms ease;
       z-index: 50;
     }
-
     .menu-panel.is-open {
       opacity: 1;
       transform: translateY(0) scale(1);
       pointer-events: auto;
     }
-
-    .menu-panel nav {
-      display: grid;
-      gap: 0.35rem;
-    }
-
+    .menu-panel nav { display: grid; gap: 0.35rem; }
     .menu-panel a {
       display: block;
       padding: 0.9rem 1rem;
@@ -162,13 +146,13 @@
       text-decoration: none;
       transition: background-color 180ms ease, transform 180ms ease, color 180ms ease;
     }
-
     .menu-panel a:hover {
-      background: rgba(111, 78, 55, 0.08);
+      background: linear-gradient(90deg, rgba(47, 116, 115, 0.1), rgba(100, 71, 107, 0.08));
       transform: translateX(4px);
-      color: #1f140d;
+      color: var(--lapis);
     }
 
+    /* ── Content ── */
     .content {
       flex: 1;
       padding: 7rem 0 3rem;
@@ -178,8 +162,19 @@
       border-top: 1px solid var(--line);
       padding-top: 1.75rem;
       background: linear-gradient(180deg, rgba(247, 239, 231, 0.45), transparent);
-      animation: rise 280ms ease-out both;
+      animation: rise 320ms ease-out both;
       will-change: transform, opacity;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding-bottom: 0.45rem;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--lapis);
     }
 
     .page-card h1 {
@@ -188,27 +183,242 @@
       color: var(--coffee-deep);
     }
 
-    .page-card p {
+    .lead {
+      font-size: 1.12rem;
+      color: var(--muted);
+      line-height: 1.9;
       margin: 0;
-      font-size: 1.1rem;
+    }
+
+    /* ── Sections ── */
+    .ins-sections {
+      display: grid;
+      gap: 2.5rem;
+      margin-top: 2.75rem;
+    }
+
+    .section-block {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+      animation: rise 430ms ease-out both;
+      will-change: transform, opacity;
+    }
+
+    .section-block h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      color: var(--coffee-deep);
+    }
+
+    .section-block > p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin: 0 0 1.25rem;
+    }
+
+    /* Insurance plan grid */
+    .plan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .plan-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.15rem;
+      border: 1px solid rgba(36, 40, 72, 0.1);
+      background: linear-gradient(160deg, rgba(250, 247, 241, 0.92), rgba(237, 245, 242, 0.78));
+    }
+
+    .plan-dot {
+      flex-shrink: 0;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--seascape);
+      opacity: 0.72;
+    }
+
+    .plan-card span {
+      font-size: 1rem;
+      color: var(--coffee-deep);
+      line-height: 1.4;
+    }
+
+    /* Split layout for fees */
+    .split-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(240px, 0.9fr);
+      gap: 2rem;
+      align-items: start;
+      margin-top: 1.25rem;
+    }
+
+    .fee-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .fee-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(36, 40, 72, 0.08);
+    }
+
+    .fee-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .fee-label {
+      font-size: 1rem;
+      color: var(--coffee-deep);
+    }
+
+    .fee-amount {
+      font-size: 1rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .rate-aside {
+      padding: 1.25rem;
+      border: 1px solid rgba(36, 40, 72, 0.1);
+      background: linear-gradient(180deg, rgba(245, 240, 247, 0.88), rgba(237, 245, 242, 0.76));
+    }
+
+    .rate-aside h3 {
+      margin: 0 0 0.7rem;
+      font-size: 1.05rem;
+      color: var(--coffee-deep);
+    }
+
+    .rate-aside p {
+      margin: 0;
+      font-size: 0.97rem;
       color: var(--muted);
       line-height: 1.8;
     }
 
+    /* Notice panel */
+    .notice-panel {
+      margin-top: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      border-left: 3px solid var(--golden);
+      background: linear-gradient(90deg, rgba(167, 116, 67, 0.07), rgba(167, 116, 67, 0.02));
+    }
+
+    .notice-panel p {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .notice-panel strong { color: var(--coffee-deep); }
+
+    /* FAQ accordion-style cards */
+    .faq-grid {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .faq-card {
+      padding: 1.25rem;
+      border: 1px solid rgba(36, 40, 72, 0.1);
+      background: linear-gradient(180deg, rgba(250, 247, 241, 0.88), rgba(241, 236, 245, 0.72));
+    }
+
+    .faq-card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.05rem;
+      color: var(--coffee-deep);
+    }
+
+    .faq-card p {
+      margin: 0;
+      font-size: 0.98rem;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* Connect panel */
+    .connect-panel {
+      margin-top: 2.8rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(36, 40, 72, 0.1);
+      background: linear-gradient(180deg, rgba(250, 247, 241, 0.88), rgba(241, 236, 245, 0.72));
+      animation: rise 480ms ease-out both;
+      will-change: transform, opacity;
+    }
+
+    .connect-panel h2 {
+      margin: 0 0 0.9rem;
+      font-size: clamp(1.45rem, 2.5vw, 2rem);
+      color: var(--coffee-deep);
+    }
+
+    .connect-panel p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      min-height: 50px;
+      padding: 0.95rem 1.4rem;
+      border: 1px solid rgba(36, 40, 72, 0.22);
+      color: #faf7f1;
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--seascape), var(--lapis));
+      box-shadow: 0 12px 24px rgba(36, 40, 72, 0.1);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+      font-size: 0.98rem;
+      font-weight: 600;
+      line-height: 1.2;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+    }
+    .cta-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(36, 40, 72, 0.14);
+      background: linear-gradient(135deg, #398786, #72507b);
+      border-color: rgba(36, 40, 72, 0.34);
+    }
+    .cta-link::after { content: "\2192"; transition: transform 180ms ease; }
+    .cta-link:hover::after { transform: translateX(3px); }
+
+    /* ── Footer ── */
     .footer {
       width: 100%;
       margin-top: auto;
       padding: 2rem 0 1.25rem;
-      border-top: 1px solid rgba(79, 59, 45, 0.18);
-      background: linear-gradient(180deg, rgba(226, 210, 194, 0.72), rgba(212, 191, 171, 0.94));
+      border-top: 1px solid rgba(36, 40, 72, 0.12);
+      background: linear-gradient(180deg, rgba(233, 225, 214, 0.8), rgba(232, 225, 234, 0.96));
     }
-
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.25rem;
     }
-
     .footer h2 {
       margin: 0 0 0.75rem;
       font-size: 1rem;
@@ -217,61 +427,38 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
-
-    .footer p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 0.98rem;
-    }
-
-    .footer a {
-      color: var(--coffee-light);
-      text-decoration: none;
-    }
-
+    .footer p { margin: 0; color: var(--muted); line-height: 1.75; font-size: 0.98rem; }
+    .footer a { color: var(--coffee-light); text-decoration: none; }
     .footer-note {
       margin-top: 1.25rem;
       padding-top: 1rem;
       border-top: 1px solid var(--line);
       text-align: center;
-      color: rgba(76, 52, 37, 0.72);
+      color: rgba(36, 40, 72, 0.52);
       font-size: 0.92rem;
     }
 
     @keyframes rise {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .page-card,
-      .footer {
-        animation: none !important;
-      }
+      .page-card, .section-block, .connect-panel { animation: none !important; }
     }
 
     @media (max-width: 760px) {
-      .topbar-inner,
-      .content,
-      .footer-grid,
-      .footer-note {
+      .topbar-inner, .content, .footer-grid, .footer-note {
         width: min(100% - 1.25rem, 1140px);
       }
+      .content { padding-top: 6rem; }
+      .plan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .split-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+    }
 
-      .content {
-        padding-top: 6rem;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+    @media (max-width: 480px) {
+      .plan-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -283,9 +470,7 @@
         <div class="menu-wrap">
           <button class="menu-button" id="menuToggle" type="button" aria-label="Open site navigation" aria-expanded="false" aria-controls="siteMenu">
             <span class="menu-icon" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
+              <span></span><span></span><span></span>
             </span>
           </button>
           <div class="menu-panel" id="siteMenu">
@@ -304,8 +489,133 @@
 
     <main class="content">
       <section class="page-card">
-        <h1>Insurance</h1>
-        <p>Insurance Page</p>
+        <div class="eyebrow">Fees &amp; coverage</div>
+        <h1>Insurance and payment.</h1>
+        <p class="lead">
+          I accept several insurance plans and also offer private-pay options for clients
+          who prefer to work outside of insurance. Please reach out if you have questions
+          about your specific coverage or costs.
+        </p>
+
+        <div class="ins-sections">
+
+          <section class="section-block">
+            <h2>Accepted insurance plans</h2>
+            <p>
+              I am currently in-network with the following plans. Coverage and
+              copays vary by plan — I recommend contacting your insurer directly
+              to confirm your mental health benefits before your first session.
+            </p>
+            <div class="plan-grid">
+              <div class="plan-card"><div class="plan-dot"></div><span>Jackson Care Connect</span></div>
+              <div class="plan-card"><div class="plan-dot"></div><span>Regence BlueCross BlueShield</span></div>
+              <div class="plan-card"><div class="plan-dot"></div><span>Providence Health Plan</span></div>
+              <div class="plan-card"><div class="plan-dot"></div><span>Cigna Health</span></div>
+              <div class="plan-card"><div class="plan-dot"></div><span>Aetna</span></div>
+              <div class="plan-card"><div class="plan-dot"></div><span>Moda Health</span></div>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2>Private pay &amp; session fees</h2>
+            <p>
+              For clients who prefer not to use insurance, or whose plan I am not
+              in-network with, I offer private-pay rates. A sliding scale may be
+              available on a limited basis — please inquire when you reach out.
+            </p>
+            <div class="split-grid">
+              <ul class="fee-list">
+                <li class="fee-item">
+                  <span class="fee-label">Initial intake session (60 min)</span>
+                  <span class="fee-amount">$[Rate]</span>
+                </li>
+                <li class="fee-item">
+                  <span class="fee-label">Individual therapy (50 min)</span>
+                  <span class="fee-amount">$[Rate]</span>
+                </li>
+                <li class="fee-item">
+                  <span class="fee-label">Couples therapy (50 min)</span>
+                  <span class="fee-amount">$[Rate]</span>
+                </li>
+                <li class="fee-item">
+                  <span class="fee-label">Extended session (80 min)</span>
+                  <span class="fee-amount">$[Rate]</span>
+                </li>
+              </ul>
+              <aside class="rate-aside">
+                <h3>Sliding scale availability</h3>
+                <p>
+                  A limited number of reduced-fee spots may be available for clients
+                  facing financial hardship. Please mention this when you reach out and
+                  we can discuss what may work for your situation.
+                </p>
+              </aside>
+            </div>
+
+            <div class="notice-panel">
+              <p>
+                <strong>Good Faith Estimate.</strong> You have the right to receive a Good
+                Faith Estimate of expected costs before your first appointment. Ask for one
+                at any time — I am happy to provide it.
+              </p>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2>Out-of-network &amp; superbills</h2>
+            <p>
+              If I am not in-network with your plan, you may still be able to use your
+              out-of-network benefits. I can provide a superbill — a detailed receipt you
+              submit directly to your insurer for potential reimbursement.
+            </p>
+            <div class="faq-grid">
+              <article class="faq-card">
+                <h3>What is a superbill?</h3>
+                <p>A superbill is an itemized statement with the billing codes your insurance company needs to process a reimbursement claim. I provide these upon request after each session or on a monthly basis.</p>
+              </article>
+              <article class="faq-card">
+                <h3>How do I check my out-of-network benefits?</h3>
+                <p>Call the member services number on the back of your insurance card and ask about your out-of-network mental health benefits, your deductible, and your reimbursement rate for outpatient therapy.</p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2>Common questions</h2>
+            <div class="faq-grid">
+              <article class="faq-card">
+                <h3>When is payment due?</h3>
+                <p>Payment is due at the time of service. I accept credit and debit cards, HSA/FSA cards, and can discuss other arrangements as needed.</p>
+              </article>
+              <article class="faq-card">
+                <h3>What is the cancellation policy?</h3>
+                <p>I ask for at least 24 hours notice for cancellations. Late cancellations or no-shows may be charged a fee. We can discuss this in more detail during the initial consultation.</p>
+              </article>
+              <article class="faq-card">
+                <h3>Do you offer telehealth sessions?</h3>
+                <p>Yes. Telehealth sessions are available and covered by most of the insurance plans I accept. Please confirm telehealth coverage with your insurer before scheduling.</p>
+              </article>
+              <article class="faq-card">
+                <h3>How do I verify my insurance benefits?</h3>
+                <p>The easiest way is to call your insurance provider directly. When you reach out to schedule, I can also help clarify what information to ask for.</p>
+              </article>
+            </div>
+          </section>
+
+        </div>
+
+        <section class="connect-panel">
+          <h2>Questions about cost or coverage?</h2>
+          <p>
+            Don&rsquo;t let uncertainty about fees be a barrier to reaching out. I&rsquo;m happy to
+            answer questions before you schedule, and a free 15-minute consultation is always
+            available to make sure the fit feels right.
+          </p>
+          <div class="cta-row">
+            <a class="cta-link" href="contact.html">Get in touch</a>
+            <a class="cta-link" href="services.html">View services</a>
+          </div>
+        </section>
       </section>
     </main>
 
@@ -318,14 +628,18 @@
         <section>
           <h2>Contact</h2>
           <p>
-            Phone: <a href="tel:15555555555">(555) 555-5555</a><br>
-            Email: <a href="mailto:hello@autumndoshiercounseling.com">hello@autumndoshiercounseling.com</a><br>
+            Phone: <a href="tel:15418190564">(541) 819-0564</a><br>
+            Email: <a href="mailto:autumndoshiercounseling@gmail.com">autumndoshiercounseling@gmail.com</a><br>
             By appointment only
           </p>
         </section>
         <section>
-          <h2>Information</h2>
-          <p>Serving the local community with a simple, respectful, and welcoming online experience. Footer layout intentionally built to remain consistent site-wide.</p>
+          <h2>Locations</h2>
+          <p>
+            Ashland, OR 97520<br>
+            Medford, OR 97501<br>
+            Serving Southern Oregon
+          </p>
         </section>
       </div>
       <div class="footer-note">&copy; 2026 Autumn Doshier Counseling. All rights reserved.</div>
@@ -344,21 +658,16 @@
         siteMenu.classList.toggle("is-open", isOpen);
         menuToggle.setAttribute("aria-expanded", String(isOpen));
       };
-
       menuToggle.addEventListener("click", () => {
         setMenuState(!menuToggle.classList.contains("is-open"));
       });
-
       document.addEventListener("click", (event) => {
         if (!siteMenu.contains(event.target) && !menuToggle.contains(event.target)) {
           setMenuState(false);
         }
       });
-
       document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          setMenuState(false);
-        }
+        if (event.key === "Escape") setMenuState(false);
       });
     }
 
@@ -367,9 +676,7 @@
         const currentScrollY = window.scrollY;
         const scrollingDown = currentScrollY > lastScrollY;
         const passedThreshold = currentScrollY > 80;
-
         topbar.classList.toggle("is-scrolled", currentScrollY > 12);
-
         if (!passedThreshold) {
           topbar.classList.remove("is-hidden");
         } else if (scrollingDown) {
@@ -377,7 +684,6 @@
         } else {
           topbar.classList.remove("is-hidden");
         }
-
         lastScrollY = currentScrollY;
       }, { passive: true });
     }
